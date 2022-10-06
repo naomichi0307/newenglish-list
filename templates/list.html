@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'extend.css'%}">
+
+{% block content %}
+<div class="list" style="padding-top: 150px;"></div>
+{% for item in object_list %}
+ 
+<div class="alert alert-{{item.priority}}" role="alert">
+    <p>{{ item.word }}  登録日:{{ item.date}} 意味:{{ item.mean}}</p>
+    <a href="{% url 'update' item.pk %}" class="btn btn-warning " tabindex="-1" role="button" aria-disabled="true">編集</a>
+    <a href="{% url 'delete' item.pk %}" class="btn btn-danger " tabindex="-1" role="button" aria-disabled="true">削除</a>
+    <a href="{% url 'detail' item.pk %}" class="btn btn-danger " tabindex="-1" role="button" aria-disabled="true">詳細</a>
+</div>
+
+{% endfor %}
+</div>
+{% endblock content %}

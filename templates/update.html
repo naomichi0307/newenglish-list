@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'extend.css'%}">
+<form action="" method="POST" class="form">
+    {% csrf_token %} 
+    {{form.word}}
+    {{form.priority}}
+    {{form.date}}
+    <input type="submit" value="更新する">
+</form>
+{% endblock content %}

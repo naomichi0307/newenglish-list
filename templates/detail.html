@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'extend.css'%}">
+<div class="alert alert-success" role="alert">
+  {{ object.word}}
+  {{ object.mean}}
+  {{ object.useful }}
+</div>
+{% endblock content%}

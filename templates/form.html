@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'extend.css'%}">
+    <center class="form">
+        <h1>検索単語を登録</h1>
+        <br/><br/>
+        {% if submitted %}
+            you are good
+        {% else %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit" class="btn btn-success" name="checkword">
+            </form>
+        {% endif %}
+    </center>
+    
+{% endblock %}
