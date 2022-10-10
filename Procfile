@@ -1,1 +1,1 @@
-web: gunicorn elapp.wsgi --log-file -
+web: gunicorn ellist.wsgi --log-file -
