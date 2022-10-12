@@ -15,7 +15,8 @@ SECRET_KEY = 'django-insecure-210*2i#!3c-0w&@=nf#t+_@=2zbicvfew(ge(^3g3d76#)#w8=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+TEMPLATE_DEBUG = False
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -28,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'elapp',
+    'guicorn',
 ]
 
 MIDDLEWARE = [
@@ -64,13 +66,16 @@ WSGI_APPLICATION = 'ellist.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config()
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
