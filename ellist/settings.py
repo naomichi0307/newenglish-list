@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-210*2i#!3c-0w&@=nf#t+_@=2zbicvfew(ge(^3g3d76#)#w8='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = ['*']
@@ -133,15 +133,15 @@ if not DEBUG:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     # Static files (CSS, JavaScript, Images)
-    STATIC_ROOT = ''
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATIC_URL = '/static/'
 
     # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-        [
-        os.path.join(BASE_DIR, 'static'),
-        ]
-    )
+    # STATICFILES_DIRS = (
+    #     [
+    #     os.path.join(BASE_DIR, 'static'),
+    #     ]
+    # )
 
     MIDDLEWARE += [
         'whitenoise.middleware.WhiteNoiseMiddleware',
