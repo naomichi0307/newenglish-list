@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'elapp',
-    'guicorn',
+    'gunicorn',
 ]
 
 MIDDLEWARE = [
