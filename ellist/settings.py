@@ -148,4 +148,4 @@ if not DEBUG:
     ]
 
     # HerokuのConfigを読み込み
-    django_heroku.settings(locals())
+    django_heroku.settings(locals(), staticfiles=False)
