@@ -20,9 +20,12 @@ posted_data = {
 }
 
 def get_word(query: str) -> str:
-    resp = requests.get(f'https://ejje.weblio.jp/content/{query}', headers={
-        'User-Agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
-    })
+    while True:
+        resp = requests.get(f'https://ejje.weblio.jp/content/{query}', headers={
+            'User-Agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
+        })
+        if resp==200:
+            break
     resp.raise_for_status()
     soup = bs4.BeautifulSoup(resp.text, 'html.parser')
     return soup.find(class_='content-explanation').get_text(strip=True)
