@@ -20,15 +20,16 @@ posted_data = {
 }
 
 def get_word(query: str) -> str:
-    while True:
+    try:
         resp = requests.get(f'https://ejje.weblio.jp/content/{query}', headers={
-            'User-Agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
-        })
-        if resp==200:
-            break
-    resp.raise_for_status()
-    soup = bs4.BeautifulSoup(resp.text, 'html.parser')
-    return soup.find(class_='content-explanation').get_text(strip=True)
+                'User-Agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
+        }, verify=False)
+
+        resp.raise_for_status()
+        soup = bs4.BeautifulSoup(resp.text, 'html.parser')
+        return soup.find(class_='content-explanation').get_text(strip=True)
+    except: 
+        return "not_http"
 class englishlist(ListView):
     template_name='list.html'
     model= Newword
@@ -45,6 +46,8 @@ def add_venue(request):
             word = form.cleaned_data['word']
             if not Newword.objects.filter(word=word).exists():
                 explanation = get_word(word)
+                if explanation == "not_http":
+                    return HttpResponseRedirect('/form/')
                 # (do something with `explanation` probably?)
                 print(explanation)
                 form.save()
