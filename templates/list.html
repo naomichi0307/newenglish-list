@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="list" style="padding-top: 150px;"></div>
-{% for item in object_list %}
+{% for item in object_list reversed %}
  
 <div class="alert alert-{{item.priority}}" role="alert">
     <p>{{ item.word }}  登録日:{{ item.date}} 意味:{{ item.mean}}</p>

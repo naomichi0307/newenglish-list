@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 import requests
 import bs4
 from selenium import webdriver
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import VenueForm
 from django.http import HttpResponseRedirect
 from twisted.internet import reactor
@@ -59,7 +59,8 @@ def add_venue(request):
                 print(word)
                 result = Newword.objects.get(word=word)
                 result.useful = result.useful + 1
-                result.save()
+                print(result.useful)
+                result.save
             return HttpResponseRedirect('/list/')
     else:
         form = VenueForm()

@@ -5,4 +5,4 @@ from django.forms import ModelForm
 class VenueForm(ModelForm):
     class Meta:
         model = Newword
-        fields = ('word','date')
+        fields = ('word',)
