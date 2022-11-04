@@ -58,7 +58,9 @@ def add_venue(request):
             else:
                 print(word)
                 result = Newword.objects.get(word=word)
+                print(result)
                 result.useful = result.useful + 1
+                print(result.mean)
                 print(result.useful)
                 result.save
             return HttpResponseRedirect('/list/')
@@ -69,8 +71,7 @@ def add_venue(request):
 class englishcreate(CreateView):
     template_name= 'create.html'
     model=Newword
-    fields = ('word', 'priority', 'date')
-    # items = elModel.objects.get(word = 'word')
+    fields = ('word', 'priority')    # items = elModel.objects.get(word = 'word')
     # print(items)
     success_url = reverse_lazy('list')
 
@@ -82,5 +83,5 @@ class englishdelete(DeleteView):
 class englishupdate(UpdateView):
     template_name = 'update.html'
     model = Newword
-    fields = ('word', 'priority', 'date')
+    fields = ('priority',)
     success_url = reverse_lazy('list')

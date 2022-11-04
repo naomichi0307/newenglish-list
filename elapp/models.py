@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-PRIORITY=(('danger','high'),('info','middle'),('success','low'))
+PRIORITY=(('danger','頻出'),('info','重要'),('success','基本'))
 class elModel(models.Model):
     word=models.CharField(max_length=25)
     #mean=models.CharField(max_length=100)

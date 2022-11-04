@@ -10,7 +10,7 @@
     <p>{{ item.word }}  登録日:{{ item.date}} 意味:{{ item.mean}}</p>
     <a href="{% url 'update' item.pk %}" class="btn btn-warning " tabindex="-1" role="button" aria-disabled="true">編集</a>
     <a href="{% url 'delete' item.pk %}" class="btn btn-danger " tabindex="-1" role="button" aria-disabled="true">削除</a>
-    <a href="{% url 'detail' item.pk %}" class="btn btn-danger " tabindex="-1" role="button" aria-disabled="true">詳細</a>
+    <!-- <a href="{% url 'detail' item.pk %}" class="btn btn-danger " tabindex="-1" role="button" aria-disabled="true">詳細</a> -->
 </div>
 
 {% endfor %}
