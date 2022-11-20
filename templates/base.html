@@ -17,12 +17,17 @@
       <div class="inner">
         <h1 class="logo">英単語帳</h1>
         <ul class="navi" style="list-style: none;">
-          <li><a href="{% url 'list' %}" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true">単語リスト</a></li>        
-          <li><a href="{% url 'form' %}" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true">単語検索</a></li>        
+          <li><a href="{% url 'list' %}" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true">全単語リスト</a></li>        
+          <li><a href="{% url 'form' %}" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true">単語検索</a></li>
+          <li><a href="{% url 'list_danger' %}" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true">頻出単語リスト</a></li>
+          <li><a href="{% url 'list_info' %}" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true">重要単語リスト</a></li>        
+          <li><a href="{% url 'list_success' %}" class="btn btn-info " tabindex="-1" role="button" aria-disabled="true">基本単語リスト</a></li>
         </ul>
         </div>
     </header>
     <div class="container">
+
+    
     {% block header %}
     {% endblock %}
 

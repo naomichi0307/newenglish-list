@@ -9,3 +9,17 @@
 .alert-success{
     padding-top: 170px;
 }
+
+.alert{
+    width: 70%;
+}
+.flex{
+    display: flex;
+}
+
+.sub{
+    width: 30%;
+}
+select{
+    margin-top: 160px;
+  }

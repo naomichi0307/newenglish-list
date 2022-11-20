@@ -13,11 +13,9 @@ from django.http import HttpResponseRedirect
 from twisted.internet import reactor
 import os, signal
 from django.db.models import F
+from django.core.exceptions import ValidationError
 # Create your views here.
 
-posted_data = {
-    'text':''
-}
 
 def get_word(query: str) -> str:
     try:
@@ -32,7 +30,22 @@ def get_word(query: str) -> str:
         return "not_http"
 class englishlist(ListView):
     template_name='list.html'
+    #
+    #template_name = 'list_info.html'
+    #template_name = 'list_success.html'
     model= Newword
+
+class Englishlist_danger(ListView):
+    template_name = 'list_danger.html'
+    model = Newword
+
+class Englishlist_info(ListView):
+    template_name = 'list_info.html'
+    model = Newword
+
+class Englishlist_success(ListView):
+    template_name = 'list_success.html'
+    model = Newword
 
 class englishdetail(DetailView):
     template_name= 'detail.html'
@@ -53,17 +66,22 @@ def add_venue(request):
                 form.save()
                 result = Newword.objects.get(word=word)
                 result.mean = explanation
+                result.priority = 'success'
                 result.save()
 
             else:
-                print(word)
                 result = Newword.objects.get(word=word)
+                print(result.pk)
                 print(result)
                 result.useful = result.useful + 1
-                print(result.mean)
                 print(result.useful)
-                result.save
-            return HttpResponseRedirect('/list/')
+                if result.useful >= 15:
+                    result.priority = 'danger'
+                elif result.useful >= 8:
+                    result.priority = 'info'
+                result.save()
+            return HttpResponseRedirect('/detail/' + str(result.pk))
+        raise form.ValidationError('名前の検証に失敗しました。')
     else:
         form = VenueForm()
 
